@@ -1,0 +1,119 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TvBoxApp.MainPage"
+             BackgroundColor="{StaticResource BackgroundDark}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="40" Spacing="40">
+
+            <Label Text="Apps de Streaming"
+                   FontSize="36"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+
+            <HorizontalStackLayout Spacing="35"
+                                   HorizontalOptions="Center">
+
+                <!-- CARD YOUTUBE -->
+                <Frame x:Name="CardYouTube"
+                       WidthRequest="220"
+                       HeightRequest="220"
+                       CornerRadius="20"
+                       BackgroundColor="#CC0000"
+                       HasShadow="True"
+                       Padding="0"
+                       Focused="OnCardFocusChanged"
+                       GestureRecognizers="{StaticResource TapYouTube}">
+                    <VerticalStackLayout Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image Source="youtube.png" WidthRequest="90"/>
+                        <Label Text="YouTube"
+                               FontSize="22"
+                               TextColor="White"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- CARD PRIME -->
+                <Frame x:Name="CardPrime"
+                       WidthRequest="220"
+                       HeightRequest="220"
+                       CornerRadius="20"
+                       BackgroundColor="#0053FF"
+                       HasShadow="True"
+                       Padding="0"
+                       Focused="OnCardFocusChanged"
+                       GestureRecognizers="{StaticResource TapPrime}">
+                    <VerticalStackLayout Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image Source="prime.png" WidthRequest="90"/>
+                        <Label Text="Prime Video"
+                               FontSize="22"
+                               TextColor="White"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- CARD NETFLIX -->
+                <Frame x:Name="CardNetflix"
+                       WidthRequest="220"
+                       HeightRequest="220"
+                       CornerRadius="20"
+                       BackgroundColor="#111111"
+                       HasShadow="True"
+                       Padding="0"
+                       Focused="OnCardFocusChanged"
+                       GestureRecognizers="{StaticResource TapNetflix}">
+                    <VerticalStackLayout Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image Source="netflix.png" WidthRequest="90"/>
+                        <Label Text="Netflix"
+                               FontSize="22"
+                               TextColor="Red"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- CARD DISNEY -->
+                <Frame x:Name="CardDisney"
+                       WidthRequest="220"
+                       HeightRequest="220"
+                       CornerRadius="20"
+                       BackgroundColor="#0A2342"
+                       HasShadow="True"
+                       Padding="0"
+                       Focused="OnCardFocusChanged"
+                       GestureRecognizers="{StaticResource TapDisney}">
+                    <VerticalStackLayout Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image Source="disney.png" WidthRequest="90"/>
+                        <Label Text="Disney+"
+                               FontSize="22"
+                               TextColor="White"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </HorizontalStackLayout>
+
+            <!-- CARD CONTATO -->
+            <Frame x:Name="CardContato"
+                   WidthRequest="500"
+                   HeightRequest="120"
+                   CornerRadius="20"
+                   BackgroundColor="#222222"
+                   HasShadow="True"
+                   Padding="0"
+                   Focused="OnCardFocusChanged"
+                   GestureRecognizers="{StaticResource TapContato}">
+                <VerticalStackLayout Spacing="8" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="Contato por Email"
+                           FontSize="26"
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
+                    <Label Text="guilherme.glsantos@gmail.com"
+                           FontSize="16"
+                           TextColor="Gray"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
