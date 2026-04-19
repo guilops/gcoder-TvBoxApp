@@ -1,4 +1,5 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TvBoxApp.MainPage"
              BackgroundColor="#121212">
@@ -14,116 +15,118 @@
                                HorizontalOptions="Center">
 
             <!-- YOUTUBE -->
-            <ContentView x:Name="CardYouTube"
-                         WidthRequest="220"
-                         HeightRequest="220"
-                         Focused="OnCardFocusChanged">
+            <Border x:Name="CardYouTube"
+                    WidthRequest="220"
+                    HeightRequest="220"
+                    StrokeShape="RoundRectangle 20"
+                    BackgroundColor="#CC0000">
 
-                <ContentView.GestureRecognizers>
+                <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapYouTube"/>
-                </ContentView.GestureRecognizers>
+                </Border.GestureRecognizers>
 
-                <Border StrokeShape="RoundRectangle 20" BackgroundColor="#CC0000">
-                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <Image Source="youtube.png" WidthRequest="90"/>
-                        <Label Text="YouTube" TextColor="White"/>
-                    </VerticalStackLayout>
-                </Border>
-            </ContentView>
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center">
+                    <Image Source="youtube.png" WidthRequest="90"/>
+                    <Label Text="YouTube" TextColor="White"/>
+                </VerticalStackLayout>
+            </Border>
 
             <!-- PRIME -->
-            <ContentView x:Name="CardPrime"
-                         WidthRequest="220"
-                         HeightRequest="220"
-                         Focused="OnCardFocusChanged">
+            <Border x:Name="CardPrime"
+                    WidthRequest="220"
+                    HeightRequest="220"
+                    StrokeShape="RoundRectangle 20"
+                    BackgroundColor="#0053FF">
 
-                <ContentView.GestureRecognizers>
+                <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapPrime"/>
-                </ContentView.GestureRecognizers>
+                </Border.GestureRecognizers>
 
-                <Border StrokeShape="RoundRectangle 20" BackgroundColor="#0053FF">
-                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <Image Source="prime.png" WidthRequest="90"/>
-                        <Label Text="Prime Video" TextColor="White"/>
-                    </VerticalStackLayout>
-                </Border>
-            </ContentView>
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center">
+                    <Image Source="prime.png" WidthRequest="90"/>
+                    <Label Text="Prime Video" TextColor="White"/>
+                </VerticalStackLayout>
+            </Border>
 
             <!-- NETFLIX -->
-            <ContentView x:Name="CardNetflix"
-                         WidthRequest="220"
-                         HeightRequest="220"
-                         Focused="OnCardFocusChanged">
+            <Border x:Name="CardNetflix"
+                    WidthRequest="220"
+                    HeightRequest="220"
+                    StrokeShape="RoundRectangle 20"
+                    BackgroundColor="#111111">
 
-                <ContentView.GestureRecognizers>
+                <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapNetflix"/>
-                </ContentView.GestureRecognizers>
+                </Border.GestureRecognizers>
 
-                <Border StrokeShape="RoundRectangle 20" BackgroundColor="#111111">
-                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <Image Source="netflix.png" WidthRequest="90"/>
-                        <Label Text="Netflix" TextColor="Red"/>
-                    </VerticalStackLayout>
-                </Border>
-            </ContentView>
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center">
+                    <Image Source="netflix.png" WidthRequest="90"/>
+                    <Label Text="Netflix" TextColor="Red"/>
+                </VerticalStackLayout>
+            </Border>
 
             <!-- DISNEY -->
-            <ContentView x:Name="CardDisney"
-                         WidthRequest="220"
-                         HeightRequest="220"
-                         Focused="OnCardFocusChanged">
+            <Border x:Name="CardDisney"
+                    WidthRequest="220"
+                    HeightRequest="220"
+                    StrokeShape="RoundRectangle 20"
+                    BackgroundColor="#0A2342">
 
-                <ContentView.GestureRecognizers>
+                <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapDisney"/>
-                </ContentView.GestureRecognizers>
+                </Border.GestureRecognizers>
 
-                <Border StrokeShape="RoundRectangle 20" BackgroundColor="#0A2342">
-                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <Image Source="disney.png" WidthRequest="90"/>
-                        <Label Text="Disney+" TextColor="White"/>
-                    </VerticalStackLayout>
-                </Border>
-            </ContentView>
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center">
+                    <Image Source="disney.png" WidthRequest="90"/>
+                    <Label Text="Disney+" TextColor="White"/>
+                </VerticalStackLayout>
+            </Border>
 
             <!-- SORTEIO -->
-            <ContentView x:Name="CardSorteio"
-                         WidthRequest="220"
-                         HeightRequest="220"
-                         Focused="OnCardFocusChanged">
+            <Border x:Name="CardSorteio"
+                    WidthRequest="220"
+                    HeightRequest="220"
+                    StrokeShape="RoundRectangle 20"
+                    BackgroundColor="#00A8FF">
 
-                <ContentView.GestureRecognizers>
+                <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapSorteio"/>
-                </ContentView.GestureRecognizers>
+                </Border.GestureRecognizers>
 
-                <Border StrokeShape="RoundRectangle 20" BackgroundColor="#00A8FF">
-                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <Label Text="🎲" FontSize="60"/>
-                        <Label Text="Sorteio" TextColor="White"/>
-                    </VerticalStackLayout>
-                </Border>
-            </ContentView>
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center">
+                    <Label Text="🎲" FontSize="60"/>
+                    <Label Text="Sorteio" TextColor="White"/>
+                </VerticalStackLayout>
+            </Border>
 
         </HorizontalStackLayout>
 
         <!-- CONTATO -->
-        <ContentView x:Name="CardContato"
-                     WidthRequest="500"
-                     HeightRequest="120"
-                     HorizontalOptions="Center"
-                     Focused="OnCardFocusChanged">
+        <Border x:Name="CardContato"
+                WidthRequest="500"
+                HeightRequest="120"
+                StrokeShape="RoundRectangle 20"
+                BackgroundColor="#222222"
+                HorizontalOptions="Center">
 
-            <ContentView.GestureRecognizers>
+            <Border.GestureRecognizers>
                 <TapGestureRecognizer Tapped="TapContato"/>
-            </ContentView.GestureRecognizers>
+            </Border.GestureRecognizers>
 
-            <Border StrokeShape="RoundRectangle 20" BackgroundColor="#222222">
-                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                    <Label Text="Contato por Email" TextColor="White"/>
-                    <Label Text="guilhermelopes_dev@hotmail.com"
-                           TextColor="Gray"/>
-                </VerticalStackLayout>
-            </Border>
-        </ContentView>
+            <VerticalStackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center">
+                <Label Text="Contato por Email" TextColor="White"/>
+                <Label Text="guilhermelopes_dev@hotmail.com"
+                       TextColor="Gray"/>
+            </VerticalStackLayout>
+
+        </Border>
 
     </VerticalStackLayout>
+
 </ContentPage>

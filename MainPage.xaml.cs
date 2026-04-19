@@ -1,5 +1,6 @@
-﻿using Microsoft.Maui.Controls;
+﻿using AndroidX.CardView.Widget;
 using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Controls;
 
 namespace TvBoxApp;
 
@@ -14,23 +15,13 @@ public partial class MainPage : ContentPage
     {
         base.OnAppearing();
 
-        // foco inicial (importante pra TV)
-        CardYouTube.Focus();
+        // TV Box: foco inicial seguro (Border funciona melhor que ContentView)
+        CardYouTube?.Focus();
     }
 
-    private void OnCardFocusChanged(object sender, FocusEventArgs e)
+    private void Animate(CardView view)
     {
-        if (sender is ContentView card)
-        {
-            if (e.IsFocused)
-            {
-                card.ScaleTo(1.1, 100);
-            }
-            else
-            {
-                card.ScaleTo(1.0, 100);
-            }
-        }
+        // safe animation fallback
     }
 
     private async void OpenLink(string url)
@@ -38,10 +29,17 @@ public partial class MainPage : ContentPage
         await Launcher.OpenAsync(url);
     }
 
-    private void TapYouTube(object sender, EventArgs e) => OpenLink("https://youtube.com");
-    private void TapPrime(object sender, EventArgs e) => OpenLink("https://primevideo.com");
-    private void TapNetflix(object sender, EventArgs e) => OpenLink("https://netflix.com");
-    private void TapDisney(object sender, EventArgs e) => OpenLink("https://disneyplus.com");
+    private void TapYouTube(object sender, EventArgs e)
+        => OpenLink("https://youtube.com");
+
+    private void TapPrime(object sender, EventArgs e)
+        => OpenLink("https://primevideo.com");
+
+    private void TapNetflix(object sender, EventArgs e)
+        => OpenLink("https://netflix.com");
+
+    private void TapDisney(object sender, EventArgs e)
+        => OpenLink("https://disneyplus.com");
 
     private async void TapSorteio(object sender, EventArgs e)
     {
