@@ -1,4 +1,5 @@
 ﻿using Microsoft.Maui.Controls;
+using Microsoft.Maui.ApplicationModel;
 
 namespace TvBoxApp;
 
@@ -9,48 +10,29 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
-	private void OnCardFocusChanged(object sender, FocusEventArgs e)
-	{
-		if (sender is Frame card)
-		{
-			if (e.IsFocused)
-			{
-				card.ScaleTo(1.10, 120, Easing.SinOut);
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
 
-				// Borda neon ao focar
-				card.BorderColor = Color.FromArgb("#00A8FF");
-				// Frame does not have a BorderWidth property in .NET MAUI; if you need a visible border thickness
-				// wrap this Frame in a Border control or adjust Padding to simulate thickness.
+        // foco inicial (importante pra TV)
+        CardYouTube.Focus();
+    }
 
-				// Glow neon aumentando o brilho
-				card.Shadow = new Shadow
-				{
-					Brush = new SolidColorBrush(Color.FromArgb("#00A8FF")),
-					Offset = new Point(0, 8),
-					Radius = 25,
-					//Opacity = 0.50
-				};
-			}
-			else
-			{
-				card.ScaleTo(1.0, 120, Easing.SinOut);
-				card.BorderColor = Colors.Transparent;
-				// Frame does not have a BorderWidth property in .NET MAUI; if you need to remove a visible border thickness
-				// ensure the surrounding Border control has its StrokeThickness set to 0 or adjust Padding accordingly.
+    private void OnCardFocusChanged(object sender, FocusEventArgs e)
+    {
+        if (sender is ContentView card)
+        {
+            if (e.IsFocused)
+            {
+                card.ScaleTo(1.1, 100);
+            }
+            else
+            {
+                card.ScaleTo(1.0, 100);
+            }
+        }
+    }
 
-				// Retorna sombra suave do tema
-				card.Shadow = new Shadow
-				{
-					Brush = new SolidColorBrush(Color.FromArgb("#00A8FF")),
-					Offset = new Point(0, 5),
-					Radius = 15,
-					//Opacity = 0.35
-				};
-			}
-		}
-	}
-
-    // Abertura dos links
     private async void OpenLink(string url)
     {
         await Launcher.OpenAsync(url);
@@ -61,8 +43,13 @@ public partial class MainPage : ContentPage
     private void TapNetflix(object sender, EventArgs e) => OpenLink("https://netflix.com");
     private void TapDisney(object sender, EventArgs e) => OpenLink("https://disneyplus.com");
 
+    private async void TapSorteio(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(SorteioPage));
+    }
+
     private async void TapContato(object sender, EventArgs e)
     {
-        await Launcher.OpenAsync("mailto:guilherme.glsantos@gmail.com?subject=Contato%20TV%20Box");
+        await Launcher.OpenAsync("mailto:guilhermelopes_dev@hotmail.com");
     }
 }
