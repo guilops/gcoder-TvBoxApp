@@ -1,0 +1,59 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TvBoxApp.TrilhaCristaPage"
+             BackgroundColor="#121212">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25">
+
+            <!-- FRASE -->
+            <Label x:Name="LabelFrase"
+                   TextColor="White"
+                   FontSize="22"
+                   HorizontalTextAlignment="Center"/>
+
+            <!-- BOTÃO OUVIR -->
+            <Button Text="🔊 Ouvir novamente"
+                    Clicked="OnFalarFrase"/>
+
+            <!-- PASTORES -->
+            <Label Text="Escolha um pastor"
+                   TextColor="White"
+                   FontSize="24"/>
+
+            <CollectionView x:Name="ListaPastores"
+                            SelectionMode="Single"
+                            SelectionChanged="OnPastorSelecionado">
+            </CollectionView>
+
+            <!-- CHECKLIST -->
+            <Label Text="Sua caminhada hoje"
+                   TextColor="White"
+                   FontSize="24"/>
+
+            <CheckBox x:Name="chkBiblia"/>
+            <Label Text="Li a Bíblia" TextColor="White"/>
+
+            <CheckBox x:Name="chkJejum"/>
+            <Label Text="Jejuei" TextColor="White"/>
+
+            <CheckBox x:Name="chkCulto"/>
+            <Label Text="Fui ao culto" TextColor="White"/>
+
+            <CheckBox x:Name="chkOracao"/>
+            <Label Text="Orei" TextColor="White"/>
+
+            <CheckBox x:Name="chkVigilia"/>
+            <Label Text="Fui à vigília" TextColor="White"/>
+
+            <Button Text="Finalizar dia"
+                    Clicked="OnFinalizarDia"/>
+
+            <Label x:Name="Resultado"
+                   TextColor="White"
+                   FontSize="20"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

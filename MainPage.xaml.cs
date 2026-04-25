@@ -1,5 +1,4 @@
-﻿using AndroidX.CardView.Widget;
-using Microsoft.Maui.ApplicationModel;
+﻿using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Controls;
 
 namespace TvBoxApp;
@@ -15,39 +14,63 @@ public partial class MainPage : ContentPage
     {
         base.OnAppearing();
 
-        // TV Box: foco inicial seguro (Border funciona melhor que ContentView)
-        CardYouTube?.Focus();
+        // Define foco inicial
+        CardCristao?.Focus();
+
+        // Mapeia clique do controle remoto (ENTER)
+        AddTvClick(CardCristao, async () => await Shell.Current.GoToAsync(nameof(TrilhaCristaPage)));
+        /*AddTvClick(CardYouTube, () => OpenLink("https://youtube.com"));
+        AddTvClick(CardPrime, () => OpenLink("https://primevideo.com"));
+        AddTvClick(CardNetflix, () => OpenLink("https://netflix.com"));
+        AddTvClick(CardDisney, () => OpenLink("https://disneyplus.com"));*/
+        AddTvClick(CardSorteio, async () => await Shell.Current.GoToAsync(nameof(SorteioPage)));
+        AddTvClick(CardContato, async () => await Launcher.OpenAsync("mailto:guilhermelopes_dev@hotmail.com"));
     }
 
-    private void Animate(CardView view)
+    // Abre links externos
+    private async Task OpenLink(string url)
     {
-        // safe animation fallback
+        try
+        {
+            await Launcher.OpenAsync(url);
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", $"Não foi possível abrir: {url}\n{ex.Message}", "OK");
+        }
     }
 
-    private async void OpenLink(string url)
+    // Método que conecta o clique da TV ao seu card
+    private void AddTvClick(View view, Action action)
     {
-        await Launcher.OpenAsync(url);
+        view.HandlerChanged += (s, e) =>
+        {
+#if ANDROID
+            if (view.Handler?.PlatformView is Android.Views.View nativeView)
+            {
+                nativeView.Focusable = true;
+                nativeView.FocusableInTouchMode = true;
+                nativeView.Clickable = true;
+
+                nativeView.SetOnClickListener(new ClickListener(action));
+            }
+#endif
+        };
     }
 
-    private void TapYouTube(object sender, EventArgs e)
-        => OpenLink("https://youtube.com");
-
-    private void TapPrime(object sender, EventArgs e)
-        => OpenLink("https://primevideo.com");
-
-    private void TapNetflix(object sender, EventArgs e)
-        => OpenLink("https://netflix.com");
-
-    private void TapDisney(object sender, EventArgs e)
-        => OpenLink("https://disneyplus.com");
-
-    private async void TapSorteio(object sender, EventArgs e)
+    // Listener nativo do Android (captura ENTER do controle)
+    class ClickListener : Java.Lang.Object, Android.Views.View.IOnClickListener
     {
-        await Shell.Current.GoToAsync(nameof(SorteioPage));
-    }
+        private readonly Action _action;
 
-    private async void TapContato(object sender, EventArgs e)
-    {
-        await Launcher.OpenAsync("mailto:guilhermelopes_dev@hotmail.com");
+        public ClickListener(Action action)
+        {
+            _action = action;
+        }
+
+        public void OnClick(Android.Views.View v)
+        {
+            _action?.Invoke();
+        }
     }
 }
